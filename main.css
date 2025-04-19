@@ -1,0 +1,144 @@
+/* ensure consistent box-sizing for centering calculations */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* animated radial gradient */
+  background: radial-gradient(circle at top left, #141e30, #243b55, #1e2a47, #10203b);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  overflow: hidden;
+  cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1156.cur'), auto;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* subtle rotating conic‑gradient overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 90deg,
+    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0) 25%,
+    rgba(255,255,255,0.05) 50%,
+    rgba(255,255,255,0) 75%,
+    rgba(255,255,255,0.05) 100%
+  );
+  animation: rotate 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* keyframes for the radial‑gradient shift */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* keyframes for the conic‑gradient rotation */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Price display fixed at true center-top */
+.price-display {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 10;
+  animation: bounce 2s infinite;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Container centers the Ren image and title */
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.ren-image {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: pulse 4s infinite;
+  z-index: 2;
+}
+
+.main-title {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  text-shadow: 2px 2px #000;
+  animation: wiggle 1s infinite alternate ease-in-out;
+  z-index: 2;
+}
+
+/* Discord button fixed at true center-bottom */
+.discord-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  animation: zoomies 1.5s infinite alternate;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.discord-button:hover {
+  background-color: #222;
+}
+
+.discord-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Meme texts / bones etc. unchanged */
+.meme-texts { /* … */ }
+.meme { /* … */ }
+.bone { /* … */ }
+audio { display: none; }
+
+/* Animations */
+@keyframes pulse   { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
+@keyframes wiggle  { from{transform:rotate(-2deg)} to{transform:rotate(2deg)} }
+@keyframes bounce  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes zoomies { from{transform:rotate(-5deg) scale(1)} to{transform:rotate(5deg) scale(1.1)} }
