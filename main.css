@@ -46,10 +46,12 @@ audio {
 }
 
 .price-display {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
   background: rgba(0,0,0,0.85);
   color: #fff;
   padding: 1rem 2rem;
@@ -93,16 +95,18 @@ audio {
 }
 
 .discord-button {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
   padding: 0.8rem 1.5rem;
   font-size: 1.1rem;
   border: none;
   border-radius: 12px;
   background-color: #000;
-  color: #fff;
+  color: white;
   cursor: auto;
   z-index: 10;
   animation: zoomies 1.5s infinite alternate;
@@ -181,9 +185,10 @@ audio {
 }
 
 @keyframes zoomies {
-  from { transform: rotate(-5deg) scale(1); }
-  to   { transform: rotate(5deg) scale(1.1); }
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
 }
+
 
 @media (max-width: 600px) {
   .price-display {
