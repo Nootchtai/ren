@@ -148,13 +148,14 @@ audio {
   z-index: 0;
 }
 
+/* Make meme animations slower (was 10s) */
 .meme {
   position: absolute;
   color: #fff;
   font-size: 1.4rem;
   font-weight: bold;
   opacity: 0;
-  transition: transform 10s linear, opacity 10s linear;
+  transition: transform 15s linear, opacity 15s linear;
   text-shadow: 2px 2px #000;
   white-space: nowrap;
   z-index: 0;
@@ -228,7 +229,7 @@ audio {
   }
 }
 
-/* Prevent text selection site-wide */
+/* Prevent text selection */
 body, button, h1, .meme, .price-display, .main-title {
   user-select: none;
   -webkit-user-select: none;
@@ -236,7 +237,7 @@ body, button, h1, .meme, .price-display, .main-title {
   -ms-user-select: none;
 }
 
-/* Prevent dragging images (like the Ren image) */
+/* Prevent image dragging */
 img {
   user-drag: none;
   -webkit-user-drag: none;

@@ -19,7 +19,7 @@
     <h1 class="main-title">$REN - The Pupcoin of Chaos</h1>
   </div>
 
-  <!-- Discord Widget Embed -->
+  <!-- Discord toggle & widget -->
   <div class="discord-toggle" onclick="toggleDiscord()">💬 Chat</div>
   <div class="discord-widget-wrapper hidden" id="discordBox">
     <iframe
@@ -32,7 +32,6 @@
     ></iframe>
   </div>
 
-
   <div class="meme-texts"></div>
 
   <script>
@@ -40,6 +39,11 @@
       const audio = document.getElementById('woofAudio');
       audio.volume = 0.3;
       audio.play().catch(() => console.warn('Autoplay prevented'));
+    }
+
+    function toggleDiscord() {
+      const box = document.getElementById('discordBox');
+      box.classList.toggle('hidden');
     }
 
     function triggerBoneExplosion() {
@@ -58,10 +62,11 @@
         bone.style.transition = 'transform 2s ease-out, opacity 2s ease-out';
         document.body.appendChild(bone);
 
-        requestAnimationFrame(() => {
+        setTimeout(() => {
           bone.style.transform = `translate(${endX}px, ${endY}px) rotate(720deg) scale(2)`;
           bone.style.opacity = 0;
-        });
+        }, 0);
+
         setTimeout(() => bone.remove(), 2000);
       }
     }
@@ -98,22 +103,17 @@
           meme.style.top  = `${startY}px`;
           document.body.appendChild(meme);
 
-          requestAnimationFrame(() => {
+          setTimeout(() => {
             meme.style.transform = `translate(${endX - startX}px, ${endY - startY}px)`;
             meme.style.opacity   = 1;
-          });
-          setTimeout(() => meme.remove(), 10500);
+          }, 0);
+
+          setTimeout(() => meme.remove(), 15500);
         }, i * 300);
       });
 
-      setTimeout(animateMemes, texts.length * 300 + 1000);
+      setTimeout(animateMemes, texts.length * 300 + 2000);
     }
   </script>
-<script>
-  function toggleDiscord() {
-    const box = document.getElementById('discordBox');
-    box.classList.toggle('hidden');
-  }
-</script>
 </body>
 </html>
