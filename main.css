@@ -94,37 +94,26 @@ audio {
   z-index: 2;
 }
 
-.discord-button {
+/* Discord widget container */
+.discord-widget-wrapper {
   position: absolute;
-  bottom: 1.5rem;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: max-content;
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 12px;
-  background-color: #000;
-  color: white;
-  cursor: auto;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 380px;
+  height: 420px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
   z-index: 10;
-  animation: zoomies 1.5s infinite alternate;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  backdrop-filter: blur(8px);
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
-.discord-button:hover {
-  background-color: #222;
-}
-
-.discord-icon {
-  width: 20px;
-  height: 20px;
-}
-
+/* Meme and bone elements */
 .meme-texts {
   position: absolute;
   top: 0;
@@ -157,6 +146,7 @@ audio {
   z-index: 5;
 }
 
+/* Animations */
 @keyframes gradientShift {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -184,12 +174,6 @@ audio {
   50%      { transform: translateY(-5px); }
 }
 
-@keyframes zoomies {
-  from { transform: scale(1); }
-  to   { transform: scale(1.05); }
-}
-
-
 @media (max-width: 600px) {
   .price-display {
     font-size: 1.5rem;
@@ -200,11 +184,6 @@ audio {
     font-size: 2rem;
   }
 
-  .discord-button {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-  }
-
   .meme {
     font-size: 1rem;
   }
@@ -212,5 +191,14 @@ audio {
   .bone {
     width: 30px;
     height: 30px;
+  }
+
+  .discord-widget-wrapper {
+    height: 300px;
+  }
+
+  .discord-widget-wrapper iframe {
+    width: 100%;
+    height: 100%;
   }
 }
