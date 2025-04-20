@@ -1,6 +1,11 @@
-/* main.css */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+  margin: 0;
+  padding: 0;
+}
 
-/* 1) consistent box-sizing so padding doesn't break centering */
 *,
 *::before,
 *::after {
@@ -8,19 +13,14 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  /* animated radial gradient */
   background: radial-gradient(circle at top left, #141e30, #243b55, #1e2a47, #10203b);
   background-size: 400% 400%;
   animation: gradientShift 20s ease infinite;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  overflow: hidden;
   position: relative;
   min-height: 100vh;
 }
 
-/* rotating conic overlay */
 body::before {
   content: "";
   position: fixed;
@@ -41,12 +41,10 @@ body::before {
   z-index: 0;
 }
 
-/* hide any audio fallback text */
 audio {
   display: none;
 }
 
-/* fixed center‑top price */
 .price-display {
   position: fixed;
   top: 20px;
@@ -63,7 +61,6 @@ audio {
   box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-/* main content centered */
 .container {
   position: relative;
   width: 100vw;
@@ -95,7 +92,6 @@ audio {
   z-index: 2;
 }
 
-/* fixed center‑bottom Discord button */
 .discord-button {
   position: fixed;
   bottom: 20px;
@@ -107,7 +103,7 @@ audio {
   border-radius: 12px;
   background-color: #000;
   color: #fff;
-  cursor: auto; /* default pointer */
+  cursor: auto;
   z-index: 10;
   animation: zoomies 1.5s infinite alternate;
   box-shadow: 0 0 15px rgba(0,0,0,0.6);
@@ -125,7 +121,6 @@ audio {
   height: 20px;
 }
 
-/* meme texts overlay */
 .meme-texts {
   position: absolute;
   top: 0;
@@ -148,7 +143,6 @@ audio {
   z-index: 0;
 }
 
-/* bone sprites */
 .bone {
   position: absolute;
   width: 40px;
@@ -159,55 +153,57 @@ audio {
   z-index: 5;
 }
 
-/* animations */
 @keyframes gradientShift {
- 0%   { background-position: 0% 50%; }
- 50%  { background-position: 100% 50%; }
-100%  { background-position: 0% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes rotate {
- from { transform: rotate(0deg); }
- to   { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes pulse {
- 0% { transform: scale(1); }
-50% { transform: scale(1.05); }
-100%{ transform: scale(1); }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 @keyframes wiggle {
- from { transform: rotate(-2deg); }
- to   { transform: rotate(2deg); }
+  from { transform: rotate(-2deg); }
+  to   { transform: rotate(2deg); }
 }
 
 @keyframes bounce {
- 0%,100% { transform: translateY(0); }
- 50%     { transform: translateY(-5px); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
 }
 
 @keyframes zoomies {
- from { transform: rotate(-5deg) scale(1); }
- to   { transform: rotate(5deg) scale(1.1); }
+  from { transform: rotate(-5deg) scale(1); }
+  to   { transform: rotate(5deg) scale(1.1); }
 }
 
-/* 2) simple mobile tweaks */
 @media (max-width: 600px) {
   .price-display {
     font-size: 1.5rem;
     padding: 0.75rem 1.5rem;
   }
+
   .main-title {
     font-size: 2rem;
   }
+
   .discord-button {
     font-size: 1rem;
     padding: 0.6rem 1.2rem;
   }
+
   .meme {
     font-size: 1rem;
   }
+
   .bone {
     width: 30px;
     height: 30px;
