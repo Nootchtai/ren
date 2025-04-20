@@ -14,7 +14,7 @@
 </head>
 <body onload="triggerBoneExplosion(); animateMemes(); playWoof();">
 
-  <audio id="woofAudio" autoplay loop>
+  <audio id="woofAudio" autoplay>
     <source src="bark.mp3" type="audio/mpeg">
   </audio>
 
@@ -52,7 +52,16 @@
     function playWoof() {
       const audio = document.getElementById('woofAudio');
       audio.volume = 0.3;
-      audio.play().catch(() => console.warn('Autoplay prevented'));
+
+      function bark() {
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        const nextDelay = 15000 + Math.random() * 30000; // 15–45 seconds
+        setTimeout(bark, nextDelay);
+      }
+
+      // First bark delay
+      setTimeout(bark, 5000);
     }
 
     function toggleDiscord() {
