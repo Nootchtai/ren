@@ -85,16 +85,34 @@ audio {
   z-index: 2;
 }
 
-.main-title {
+.ren-title {
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-top: 1rem;
   text-shadow: 2px 2px #000;
-  animation: wiggle 1s infinite alternate ease-in-out;
+  animation: pulse 4s infinite;
   z-index: 2;
+  user-select: none;
 }
 
-/* Discord toggle button (chat bubble) */
+.ren-tagline {
+  color: #ffefc4;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0.5rem 0 0;
+  animation: floatyText 6s ease-in-out infinite;
+  text-shadow: 1px 1px 2px #000;
+  z-index: 2;
+  user-select: none;
+}
+
+@keyframes floatyText {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Discord UI */
 .discord-toggle {
   position: fixed;
   bottom: 20px;
@@ -113,7 +131,6 @@ audio {
   background: rgba(50, 50, 50, 0.9);
 }
 
-/* Discord widget container */
 .discord-widget-wrapper {
   position: fixed;
   bottom: 70px;
@@ -148,7 +165,6 @@ audio {
   z-index: 0;
 }
 
-/* Make meme animations slower (was 10s) */
 .meme {
   position: absolute;
   color: #fff;
@@ -189,25 +205,24 @@ audio {
   100% { transform: scale(1); }
 }
 
-@keyframes wiggle {
-  from { transform: rotate(-2deg); }
-  to   { transform: rotate(2deg); }
-}
-
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-5px); }
 }
 
-/* Responsive for mobile */
+/* Responsive */
 @media (max-width: 600px) {
   .price-display {
     font-size: 1.5rem;
     padding: 0.75rem 1.5rem;
   }
 
-  .main-title {
+  .ren-title {
     font-size: 2rem;
+  }
+
+  .ren-tagline {
+    font-size: 1.1rem;
   }
 
   .meme {
@@ -229,15 +244,13 @@ audio {
   }
 }
 
-/* Prevent text selection */
-body, button, h1, .meme, .price-display, .main-title {
+/* Disable text select & image drag */
+body, button, h1, .meme, .price-display, .ren-title, .ren-tagline {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
 }
-
-/* Prevent image dragging */
 img {
   user-drag: none;
   -webkit-user-drag: none;
