@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
 
   <!-- Background woof audio -->
   <audio id="woofAudio" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/16/audio_00b5d03b36.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+    <source src="bark.mp3" type="audio/mpeg">
+    <!-- fallback text hidden by CSS -->
   </audio>
 
   <!-- Price display fixed near top -->
@@ -51,8 +52,8 @@
         bone.style.transform = `translate(0,0) rotate(0deg)`;
         bone.style.opacity = 1;
         bone.style.transition = 'transform 2s ease-out, opacity 2s ease-out';
-
         document.body.appendChild(bone);
+
         requestAnimationFrame(() => {
           bone.style.transform = `translate(${endX}px, ${endY}px) rotate(720deg) scale(2)`;
           bone.style.opacity = 0;
@@ -64,12 +65,16 @@
     function animateMemes() {
       const container = document.querySelector('.meme-texts');
       const texts = [
-        "TO THE MOON 🐾", "1 REN = 1 TREAT 🍖", "very invest, much wow 😮", "REN FOR PRESIDENT 🇺🇸", "hodl like a good girl 🐕‍🦺",
-        "🐾 ZOOMIES ACTIVATED 🐾", "buy now, bark later 💸", "rugproof. I nap on rugs. 🛋️", "$REN > your altcoin 🤭", "no utility, just vibes 🌈",
-        "BORK BORK! 🐶", "Paws up! 🙌", "Moon mission: engaged 🚀", "Doggo in DeFi! 🐕💰", "Eat the whitepaper! 🍗",
-        "Alpha pup! 🥇", "Sniffing out gains! 👃💸", "Ren army, assemble! 🐕‍🦺", "Fetch those profits! 🎾", "Stay paw-sitive! ✨",
-        "Goodest girl ever. ❤️", "Chew on this: $REN! 🦴", "Tail wags > market caps 🐕", "Shiba who? 🤷‍♂️", "This is pure serotonin! 😊",
-        "Woof if you love crypto! 🐾", "Don't stop believin' 🐶", "Pupper power! 💥", "Stake my bones! 🦴📈", "Future’s so bright, gotta wear doggles! 😎"
+        "TO THE MOON 🐾", "1 REN = 1 TREAT 🍖", "very invest, much wow 😮", "REN FOR PRESIDENT 🇺🇸",
+        "hodl like a good girl 🐕‍🦺", "🐾 ZOOMIES ACTIVATED 🐾", "buy now, bark later 💸",
+        "rugproof. I nap on rugs. 🛋️", "$REN > your altcoin 🤭", "no utility, just vibes 🌈",
+        "BORK BORK! 🐶", "Paws up! 🙌", "Moon mission: engaged 🚀", "Doggo in DeFi! 🐕💰",
+        "Eat the whitepaper! 🍗", "Alpha pup! 🥇", "Sniffing out gains! 👃💸",
+        "Ren army, assemble! 🐕‍🦺", "Fetch those profits! 🎾", "Stay paw-sitive! ✨",
+        "Goodest girl ever. ❤️", "Chew on this: $REN! 🦴", "Tail wags > market caps 🐕",
+        "Shiba who? 🤷‍♂️", "This is pure serotonin! 😊", "Woof if you love crypto! 🐾",
+        "Don't stop believin' 🐶", "Pupper power! 💥", "Stake my bones! 🦴📈",
+        "Future’s so bright, gotta wear doggles! 😎"
       ];
 
       texts.forEach((text, i) => {
@@ -80,37 +85,19 @@
 
           const side = Math.floor(Math.random() * 4);
           let startX, startY, endX, endY;
-          if (side === 0) {
-            startX = Math.random() * window.innerWidth;
-            startY = -50;
-            endX = startX;
-            endY = window.innerHeight + 50;
-          } else if (side === 1) {
-            startX = Math.random() * window.innerWidth;
-            startY = window.innerHeight + 50;
-            endX = startX;
-            endY = -50;
-          } else if (side === 2) {
-            startX = -200;
-            startY = Math.random() * window.innerHeight;
-            endX = window.innerWidth + 200;
-            endY = startY;
-          } else {
-            startX = window.innerWidth + 200;
-            startY = Math.random() * window.innerHeight;
-            endX = -200;
-            endY = startY;
-          }
+          if (side === 0) { startX = Math.random()*innerWidth; startY = -50; endX = startX; endY = innerHeight+50; }
+          else if (side === 1) { startX = Math.random()*innerWidth; startY = innerHeight+50; endX = startX; endY = -50; }
+          else if (side === 2) { startX = -200; startY = Math.random()*innerHeight; endX = innerWidth+200; endY = startY; }
+          else            { startX = innerWidth+200; startY = Math.random()*innerHeight; endX = -200; endY = startY; }
 
           meme.style.left = `${startX}px`;
-          meme.style.top = `${startY}px`;
+          meme.style.top  = `${startY}px`;
           document.body.appendChild(meme);
 
           requestAnimationFrame(() => {
             meme.style.transform = `translate(${endX - startX}px, ${endY - startY}px)`;
-            meme.style.opacity = 1;
+            meme.style.opacity   = 1;
           });
-
           setTimeout(() => meme.remove(), 10500);
         }, i * 300);
       });
