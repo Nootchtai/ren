@@ -20,7 +20,8 @@
   </div>
 
   <!-- Discord Widget Embed -->
-  <div class="discord-widget-wrapper">
+  <div class="discord-toggle" onclick="toggleDiscord()">💬 Chat</div>
+  <div class="discord-widget-wrapper hidden" id="discordBox">
     <iframe
       src="https://discord.com/widget?id=1363310082514878725&theme=dark"
       width="350"
@@ -30,6 +31,7 @@
       sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
     ></iframe>
   </div>
+
 
   <div class="meme-texts"></div>
 
@@ -107,5 +109,11 @@
       setTimeout(animateMemes, texts.length * 300 + 1000);
     }
   </script>
+<script>
+  function toggleDiscord() {
+    const box = document.getElementById('discordBox');
+    box.classList.toggle('hidden');
+  }
+</script>
 </body>
 </html>
